@@ -1,18 +1,19 @@
 import random
 
-from PySide6.QtCharts import QLineSeries, QValueAxis, QChart
+# from PySide6.QtCharts import QLineSeries, QValueAxis, QChart
+from PySide6 import QtCharts
 from PySide6.QtCore import Qt
 
 
-class FillStatistics(QChart):
-	def __init__(self):
-		super().__init__()
+class FillStatistics(QtCharts):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
 
-		self.chart = QChart()
+		self.chart = QtCharts.QChart()
 
 	def add_series(self, name, columns):
 		# Create QLineSeries
-		self.series = QLineSeries()
+		self.series = QtCharts.QLineSeries()
 		self.series.setName(name)
 
 		# Filling QLineSeries
@@ -36,7 +37,7 @@ class FillStatistics(QChart):
 
 		# Setting X-axis
 		# self.axis_x = QDateTimeAxis()
-		self.axis_x = QValueAxis()
+		self.axis_x = QtCharts.QValueAxis()
 		self.axis_x.setTickCount(10)
 		# self.axis_x.setFormat("dd.MM (h:mm)")
 		self.axis_x.setTitleText("Date")
@@ -44,7 +45,7 @@ class FillStatistics(QChart):
 		self.series.attachAxis(self.axis_x)
 
 		# Setting Y-axis
-		self.axis_y = QValueAxis()
+		self.axis_y = QtCharts.QValueAxis()
 		self.axis_y.setTickCount(10)
 		self.axis_y.setLabelFormat("%.2f")
 		self.axis_y.setTitleText("Test")
