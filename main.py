@@ -1,10 +1,10 @@
-import random
+# import random
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QSizePolicy
-from PySide6.QtCharts import QChart, QChartView, QValueAxis, QLineSeries
-from PySide6.QtGui import QPainter
-from PySide6.QtCore import Qt
-from PySide6.QtCore import QFile
+# from PySide6.QtCharts import QChart, QChartView, QValueAxis, QLineSeries
+# from PySide6.QtGui import QPainter
+# from PySide6.QtCore import Qt
+# from PySide6.QtCore import QFile
 from ui.MainWindowTest import Ui_MainWindow
 from UtStatistic.utstatistic import FillStatistics
 
@@ -15,23 +15,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # setup UI
         self.setupUi(self)
+
         # setup stackedWidget_Pages_Widgets
-        size = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
 
         # setup Overview
+        newstatistic = FillStatistics()
 
-        # setup Charts
-        self.chart = FillStatistics()
-        # Creating QChart
-        self.chart.setAnimationOptions(QChart.AllAnimations)
-        FillStatistics.add_series("Magnitude (Column 1)", [0, 1])
-        # Creating QChartView
-        self.chart_view = QChartView(self.chart)
-        self.chart_view.setRenderHint(QPainter.Antialiasing)
-
-        size.setHorizontalStretch(4)
-        self.chart_view.setSizePolicy(size)
-        self.horizontalLayout.addWidget(self.chart_view)
+        newstatistic.setupCharts()
 
 
 if __name__ == "__main__":
