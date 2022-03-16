@@ -3,7 +3,6 @@ import random
 from PySide6 import QtCharts
 from PySide6.QtCore import Qt
 
-import main
 from ui.MainWindowTest import Ui_MainWindow
 from PySide6.QtWidgets import QSizePolicy, QMainWindow
 from PySide6.QtCharts import QChart, QChartView
@@ -17,6 +16,7 @@ class FillStatistics(QMainWindow, Ui_MainWindow):
 		self.chart = QtCharts.QChart()
 		self.size = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
 		self.series = QtCharts.QLineSeries()
+		self.chart_view = QChartView(self.chart)
 
 
 	def add_series(self, name, columns):
@@ -42,7 +42,7 @@ class FillStatistics(QMainWindow, Ui_MainWindow):
 		self.chart.setAnimationOptions(QChart.AllAnimations)
 		self.add_series("Magnitude (Column 1)", [0, 1])
 		# Creating QChartView
-		self.chart_view = QChartView(self.chart)
+		# self.chart_view = QChartView(self.chart)
 		self.chart_view.setRenderHint(QPainter.Antialiasing)
 
 		# Setting X-axis
